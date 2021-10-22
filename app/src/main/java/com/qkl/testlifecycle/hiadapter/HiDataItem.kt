@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
  */
 abstract class HiDataItem<DATA, VH : RecyclerView.ViewHolder>(data: DATA) {
     var mData: DATA? = null
+    private var mAdapter: HiAdapter? = null
 
     init {
         this.mData = data
@@ -24,15 +25,24 @@ abstract class HiDataItem<DATA, VH : RecyclerView.ViewHolder>(data: DATA) {
         return -1
     }
 
-    open fun getItemView(view:ViewGroup): View? {
+    open fun getItemView(view: ViewGroup): View? {
         return null
     }
 
-    fun refreshItem(){
-
+    fun setAdapter(adapter: HiAdapter) {
+        this.mAdapter = adapter
     }
 
-    fun removeItem(){
-
+    fun refreshItem() {
+        mAdapter!!.refreshItem(this)
     }
+
+    fun removeItem() {
+        mAdapter!!.removeItem(this)
+    }
+
+    fun getSpanSize(): Int {
+        return 0
+    }
+
 }
