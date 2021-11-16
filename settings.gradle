@@ -8,3 +8,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "TestLifeCycle"
 include ':app'
+include ':nav-annotation'
+include ':nav-annotation'
